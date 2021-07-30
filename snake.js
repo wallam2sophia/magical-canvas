@@ -1,10 +1,15 @@
 class Snake {
-  constructor(options = { width: 600, height: 600, id: "snake", span: 40 }) {
+  constructor(
+    options = { width: 600, height: 600, id: "snake", span: 40, level: 1 }
+  ) {
+    this.options = options;
     this.head = [];
     this.body = [];
     this.food = null;
     this.step = 10;
-    this.speed = 200;
+    this.level = options.level || 1;
+    this.speed = 400 - this.level * 100;
+    this.score = 0;
     this.direction = "RIGHT";
     this.timer = null;
     this.width = options.width || 600;
@@ -22,7 +27,7 @@ class Snake {
     this.body = [];
     this.food = null;
     this.step = 10;
-    this.speed = 200;
+    this.speed = 400 - this.level * 100;
     this.direction = "RIGHT";
     this.timer = null;
     this.ctx.clearRect(0, 0, this.width, this.height);
@@ -30,7 +35,7 @@ class Snake {
     // 背景色
     this.ctx.fillStyle = "#000";
     this.ctx.fillRect(0, 0, this.width, this.height);
-
+    console.log(this.speed);
     // 画出蛇的身体
     this.initSnake(5);
     this.drawSnake();
@@ -154,22 +159,27 @@ class Snake {
   gameOver() {
     clearInterval(this.timer);
     this.ctx.fillStyle = "#409eff";
-    this.ctx.fillRect(this.width / 2 - 100, this.height / 2 - 30, 200, 60);
+    this.ctx.fillRect(this.width / 2 - 100, this.height / 2 - 30, 200, 80);
     this.ctx.textAlign = "center";
     this.ctx.textBaseline = "middle";
     this.ctx.font = "14px Georgia";
     this.ctx.fillStyle = "#fff";
     const text = `Game Over !`;
-    this.ctx.fillText(text, this.width / 2, this.height / 2);
+    this.ctx.fillText("Game Over !", this.width / 2, this.height / 2);
+    this.ctx.fillText(
+      `SCORE： ${this.score}`,
+      this.width / 2,
+      this.height / 2 + 30
+    );
     // 再来一局
     this.ctx.fillStyle = "#409eff";
-    this.ctx.fillRect(this.width / 2 - 50, this.height / 2 + 40, 100, 40);
+    this.ctx.fillRect(this.width / 2 - 50, this.height / 2 + 80, 100, 40);
     this.ctx.textAlign = "center";
     this.ctx.textBaseline = "middle";
     this.ctx.font = "12px Georgia";
     this.ctx.fillStyle = "#fff";
     const text1 = `再来一局`;
-    this.ctx.fillText(text1, this.width / 2, this.height / 2 + 60);
+    this.ctx.fillText(text1, this.width / 2, this.height / 2 + 100);
     let that = this;
     this.canvas.onclick = function (e) {
       that.onceAgin(e);
@@ -229,6 +239,7 @@ class Snake {
 
   eatFood() {
     if (this.head[0] === this.food[0] && this.head[1] === this.food[1]) {
+      this.score += this.level * 10;
       this.calPos(this.direction, "eat"); // 重新绘制蛇头
       this.food = null;
       this.addFood(); // 重置食物

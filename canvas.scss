@@ -2,8 +2,9 @@
   position: relative;
   #loading {
     position: absolute;
-    left: 0;
+    left: 50%;
     top: 0;
+    transform: translateX(-50%);
   }
   #star {
     background: url(./bg.jpg) 0 0 / cover no-repeat;
@@ -15,6 +16,7 @@ input[type="radio"] {
 .menu-tabs {
   display: flex;
   align-items: center;
+  justify-content: center;
   height: 50px;
   line-height: 50px;
 
@@ -29,5 +31,48 @@ input[type="radio"] {
   }
   input:checked + label {
     opacity: 1;
+  }
+}
+.main-box {
+  text-align: center;
+}
+.configure-bar {
+  margin-bottom: 20px;
+  display: inline-flex;
+  align-items: center;
+  color: #333;
+
+  label {
+    font-size: 12px;
+    margin-right: 5px;
+  }
+  select,
+  input {
+    background-image: none;
+    border-radius: 4px;
+    border: 1px solid #dcdfe6;
+    box-sizing: border-box;
+    color: #606266;
+    outline: none;
+    padding: 5px 15px 5px 10px;
+  }
+  input {
+    width: 100px;
+  }
+  button {
+    padding: 5px 10px;
+    background-color: #409eff;
+    border-radius: 4px;
+    border: 1px solid #409eff;
+    box-sizing: border-box;
+    color: #fff;
+    outline: none;
+
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+  .cfg-item {
+    margin-right: 20px;
   }
 }

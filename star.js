@@ -1,10 +1,13 @@
 class Star {
-  constructor(options = { width: 600, height: 600, id: "star", span: 40 }) {
+  constructor(
+    options = { width: 600, height: 600, id: "star", span: 40, number: 100 }
+  ) {
+    this.options = options;
     this.timer = null;
     this.r = 3;
     this.dots = [];
-    this.nums = 100;
-    this.span = 30;
+    this.nums = options.number || 100;
+    this.span = options.span || 40;
     this.width = options.width || 600;
     this.height = options.height || 600;
     this.mouseStar = null;

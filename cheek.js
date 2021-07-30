@@ -1,8 +1,18 @@
 class Cheek {
-  constructor(options = { width: 600, height: 600, id: "cheek", span: 40 }) {
+  constructor(
+    options = {
+      width: 600,
+      height: 600,
+      id: "cheek",
+      span: 40,
+      player: 1,
+      wait: 3,
+    }
+  ) {
+    this.options = options;
     this.cheeks = []; // 1: 白子 2：黑子
-    this.player = 1; // 1: 白子 2：黑子
-    this.wait = 3; // 等待对方下棋时间
+    this.player = options.player || 1; // 1: 白子 2：黑子
+    this.wait = options.wait || 3; // 等待对方下棋时间
     this.span = options.span || 40;
     this.width = options.width || 600;
     this.height = options.height || 600;
@@ -16,7 +26,7 @@ class Cheek {
   init() {
     // 背景色
     this.cheeks = [];
-    this.player = 1;
+    this.player = this.options.player || 1;
     this.ctx.fillStyle = "#eee";
     this.ctx.fillRect(0, 0, this.width, this.height);
     // 网格
@@ -135,7 +145,9 @@ class Cheek {
     this.ctx.textBaseline = "middle";
     this.ctx.font = "14px Georgia";
     this.ctx.fillStyle = "#fff";
-    const text = `游戏结束,${this.player === 1 ? "白子" : "黑子"}赢了!`;
+    const text = `游戏结束,${
+      this.options.player === this.player ? "我方" : "对方"
+    }赢了!`;
     this.ctx.fillText(text, this.width / 2, this.height / 2);
     // 再来一局
     this.ctx.fillStyle = "#409eff";

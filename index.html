@@ -43,26 +43,16 @@
       />
       <label for="clock-tab">时钟</label>
     </div>
-    <div class="canvas-box" id="canvas-box"></div>
+    <div class="main-box">
+      <div class="configure-bar" id="configure"></div>
+      <div class="canvas-box" id="canvas-box"></div>
+    </div>
+
     <script src="./loading.js"></script>
     <script src="./clock.js"></script>
     <script src="./cheek.js"></script>
     <script src="./snake.js"></script>
     <script src="./star.js"></script>
-    <script>
-      function handleTabChange(value) {
-        let canvasBox = document.getElementById("canvas-box");
-        let canvasEl = `<canvas id="${value}"></canvas>`;
-        canvasBox.innerHTML = canvasEl;
-        const tab = value.charAt(0).toUpperCase() + value.slice(1);
-        let obj = {
-          width: 400,
-          height: 400,
-          id: value,
-        };
-        eval("new " + tab + "(obj)");
-      }
-      handleTabChange("cheek");
-    </script>
+    <script src="./index.js"></script>
   </body>
 </html>
