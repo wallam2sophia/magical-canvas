@@ -1,0 +1,169 @@
+.trangle {
+  width: 0;
+  height: 0;
+  border: 100px solid transparent;
+  border-right-color: #f66;
+  border-top-color: #f66;
+}
+
+.bubble {
+  width: 200px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 10px 20px;
+  border: 2px solid #f90;
+  border-radius: 6px;
+  position: relative;
+  color: #f90;
+}
+
+.bubble:before {
+  content: "";
+  position: absolute;
+  left: 100%;
+  top: 50%;
+  margin-top: -6px;
+  margin-left: 0;
+  z-index: 2;
+  border: 6px solid transparent;
+  border-left-color: #fff;
+}
+
+.bubble::after {
+  content: "";
+  position: absolute;
+  left: 100%;
+  top: 50%;
+  margin-top: -8px;
+  border: 8px solid transparent;
+  border-left-color: #f90;
+}
+
+.mouse {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#09f), to(#f66));
+  background-image: linear-gradient(to bottom, #09f, #f66);
+  -webkit-box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+          box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+  margin-left: 200px;
+  margin-top: 200px;
+}
+
+.mouse::before, .mouse::after {
+  position: absolute;
+  left: 0;
+  top: 0;
+  border-radius: 100%;
+  width: 100%;
+  height: 100%;
+  content: "";
+}
+
+.mouse::before {
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#09f), to(#f66));
+  background-image: linear-gradient(to bottom, #09f, #f66);
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+}
+
+.mouse::after {
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#3c9), color-stop(50%, #09f), color-stop(50%, transparent), to(transparent));
+  background-image: linear-gradient(to bottom, #3c9, #09f 50%, transparent 50%, transparent);
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+}
+
+.state-ball {
+  overflow: hidden;
+  position: relative;
+  padding: 5px;
+  border: 3px solid #3c9;
+  border-radius: 100%;
+  width: 150px;
+  height: 150px;
+  background-color: #fff;
+}
+
+.state-ball::before, .state-ball::after {
+  position: absolute;
+  left: 50%;
+  bottom: 5px;
+  z-index: 9;
+  margin-left: -100px;
+  width: 200px;
+  height: 200px;
+  content: "";
+}
+
+.state-ball::before {
+  margin-bottom: calc(var(--offset) * 1.34px);
+  border-radius: 45%;
+  background-color: rgba(255, 255, 255, 0.5);
+  -webkit-animation: rotate 10s linear -5s infinite;
+          animation: rotate 10s linear -5s infinite;
+}
+
+.state-ball::after {
+  margin-bottom: calc(var(--offset) * 1.34px + 10px);
+  border-radius: 40%;
+  background-color: rgba(255, 255, 255, 0.8);
+  -webkit-animation: rotate 15s infinite;
+          animation: rotate 15s infinite;
+}
+
+.state-ball .wave {
+  position: relative;
+  border-radius: 100%;
+  width: 100%;
+  height: 100%;
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(13%, #af8), color-stop(91%, #3c9));
+  background-image: linear-gradient(to bottom, #af8 13%, #3c9 91%);
+}
+
+.state-ball .progress::after {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 99;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+  height: 100%;
+  font-weight: bold;
+  font-size: 16px;
+  color: #09f;
+  content: counter(progress) "%";
+  counter-reset: progress var(--offset);
+}
+
+@-webkit-keyframes rotate {
+  to {
+    -webkit-transform: rotate(1turn);
+            transform: rotate(1turn);
+  }
+}
+
+@keyframes rotate {
+  to {
+    -webkit-transform: rotate(1turn);
+            transform: rotate(1turn);
+  }
+}
+
+input {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+}
+/*# sourceMappingURL=index.css.map */
