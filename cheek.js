@@ -76,11 +76,27 @@ class Cheek {
     if (!this.isvalidDot(row, col)) {
       return false;
     }
-    this.ctx.fillStyle = this.player === 1 ? "white" : "black";
-    this.ctx.shadowBlur = 20;
-    this.ctx.shadowColor = "black";
-    this.ctx.shadowOffsetX = 2;
-    this.ctx.shadowOffsetY = 2;
+    const radialGradient = this.ctx.createRadialGradient(
+      x + 2,
+      y - 2,
+      15,
+      x + 2,
+      y - 2,
+      0
+    );
+    if (this.player === 1) {
+      radialGradient.addColorStop(0, "#d1d1d1");
+      radialGradient.addColorStop(1, "#f9f9f9");
+    } else {
+      radialGradient.addColorStop(0, "#0a0a0a");
+      radialGradient.addColorStop(1, "#636766");
+    }
+    this.ctx.fillStyle = radialGradient;
+    // this.ctx.fillStyle = this.player === 1 ? "white" : "black";
+    // this.ctx.shadowBlur = 20;
+    // this.ctx.shadowColor = "black";
+    // this.ctx.shadowOffsetX = 2;
+    // this.ctx.shadowOffsetY = 2;
     this.ctx.beginPath();
     this.ctx.arc(x, y, 15, 0, Math.PI * 2, true);
     this.ctx.fill();
