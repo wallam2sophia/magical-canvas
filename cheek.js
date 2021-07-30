@@ -76,6 +76,7 @@ class Cheek {
     if (!this.isvalidDot(row, col)) {
       return false;
     }
+    // 创建一个渐变色，是棋子更立体
     const radialGradient = this.ctx.createRadialGradient(
       x + 2,
       y - 2,
