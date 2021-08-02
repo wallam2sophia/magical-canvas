@@ -191,8 +191,8 @@ class Snake {
     if (
       x < this.width / 2 + 50 &&
       x > this.width / 2 - 50 &&
-      y > this.height / 2 + 40 &&
-      y < this.height / 2 + 80
+      y > this.height / 2 + 80 &&
+      y < this.height / 2 + 100
     ) {
       this.init();
     }
