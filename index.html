@@ -13,6 +13,14 @@
         type="radio"
         checked="checked"
         name="tab"
+        value="box"
+        id="box-tab"
+        onchange="handleTabChange(this.value)"
+      />
+      <label for="box-tab">俄罗斯方块</label>
+      <input
+        type="radio"
+        name="tab"
         value="cheek"
         id="cheek-tab"
         onchange="handleTabChange(this.value)"
@@ -49,6 +57,7 @@
     </div>
 
     <script src="./loading.js"></script>
+    <script src="./box.js"></script>
     <script src="./clock.js"></script>
     <script src="./cheek.js"></script>
     <script src="./snake.js"></script>

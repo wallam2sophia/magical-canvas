@@ -29,13 +29,11 @@ class Snake {
     this.step = 10;
     this.speed = 400 - this.level * 100;
     this.direction = "RIGHT";
-    this.timer = null;
     this.ctx.clearRect(0, 0, this.width, this.height);
     this.timer = null;
     // 背景色
     this.ctx.fillStyle = "#000";
     this.ctx.fillRect(0, 0, this.width, this.height);
-    console.log(this.speed);
     // 画出蛇的身体
     this.initSnake(5);
     this.drawSnake();

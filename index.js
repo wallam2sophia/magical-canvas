@@ -1,6 +1,14 @@
 function handleTabChange(value) {
+  console.log(value);
   tab = value;
   eval(value + "()");
+}
+function box() {
+  let str = `
+      
+  `;
+  configureBox.innerHTML = str;
+  startBox();
 }
 function clock() {
   let str = `
@@ -155,6 +163,9 @@ function startSnake() {
 function startClock() {
   renderTab(tab);
 }
+function startBox() {
+  renderTab(tab);
+}
 function startStar() {
   let span = Number(document.getElementById("span").value);
   let number = Number(document.getElementById("number").value);
@@ -180,6 +191,6 @@ function renderTab(tab, config = {}) {
   };
   eval("new " + tabObj + "(obj)");
 }
-let tab = "cheek";
+let tab = "box";
 let configureBox = document.getElementById("configure");
 handleTabChange(tab);
